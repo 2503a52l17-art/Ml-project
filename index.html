@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Model Evaluation</title>
+</head>
+<body>
+
+<h2>Upload Dataset (CSV)</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Upload & Run</button>
+</form>
+
+{% if results %}
+    <h2>Results</h2>
+
+    {% for model, res in results.items() %}
+        <h3>{{ model }}</h3>
+        <p>Accuracy: {{ res.accuracy }}</p>
+        <p>Precision: {{ res.precision }}</p>
+        <p>Recall: {{ res.recall }}</p>
+        <p>Confusion Matrix: {{ res.confusion_matrix }}</p>
+        <hr>
+    {% endfor %}
+
+    <h2>Accuracy Graph</h2>
+    <img src="{{ plot_path }}" width="500">
+
+{% endif %}
+
+</body>
+</html>

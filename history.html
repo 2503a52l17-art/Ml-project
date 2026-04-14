@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+</head>
+<body>
+
+<h2>Upload History</h2>
+
+{% for item in data %}
+    <h3>File: {{ item.file }}</h3>
+    <p>Uploaded at: {{ item.time }}</p>
+
+    {% for res in item.results %}
+        <p>Model: {{ res.model_name }}</p>
+        <p>Accuracy: {{ res.accuracy }}</p>
+        <p>Precision: {{ res.precision }}</p>
+        <p>Recall: {{ res.recall }}</p>
+        <p>Confusion Matrix: {{ res.confusion_matrix }}</p>
+        <hr>
+    {% endfor %}
+{% endfor %}
+
+</body>
+</html>
